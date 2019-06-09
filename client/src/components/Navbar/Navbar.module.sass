@@ -1,0 +1,71 @@
+@import '../../_variables.sass'
+
+
+.mainNavDiv
+    height: 100px
+    width: 100vw
+    background: $background-black
+    padding: 5px
+
+.logoDiv
+    display: inline-block
+    float: left
+    vertical-align: middle
+    padding: 12.5px
+    @media (max-width: 850px)
+        padding-top: 25px
+    @media (max-width: 600px)
+        display: none
+
+.TMDBlogo
+    height: 75px
+    @media (max-width: 850px)
+        height: 50px
+    
+
+.inputDiv
+    display: inline-block
+    vertical-align: middle
+    float: right
+    padding: 25px
+    @media (max-width: 600px)
+        display: block
+        margin: auto
+        float: none
+
+.searchInput
+    height: 30px
+    width: 530px
+    background: #242526
+    border: solid 1px $border-grey
+    border-right: none
+    font-family: $rale
+    font-size: 20px
+    padding: 10px
+    color: $border-grey
+    &:focus
+        outline: none
+    @media (max-width: 850px)
+        width: 50vw
+    @media (max-width: 600px)
+        width: 70vw
+
+.searchIconDiv
+    height: 50px
+    width: 40px
+    display: inline-block
+    vertical-align: middle
+    float: right
+    background: #242526
+    border: solid 1px $border-grey
+    border-left: none
+    color: $border-grey
+    text-align: center
+    cursor: pointer
+
+.searchIcon
+    margin-top: 10px
+    font-size: 30px
+    display: block
+    vertical-align: middle
+
