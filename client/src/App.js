@@ -4,26 +4,39 @@ import Navbar from "./components/Navbar/Navbar";
 
 class App extends Component {
   // Initialize state
-  state = { passwords: [] };
+  state = { movies: [] };
 
   // Fetch passwords after first mount
-  componentDidMount() {
+  componentDidMount = () => {
     this.getPasswords();
-  }
+  };
 
   getPasswords = () => {
     // Get the passwords and store them in state
-    fetch("/api/passwords")
+    fetch("/api/movies")
       .then(res => res.json())
-      .then(passwords => this.setState({ passwords }));
+      .then(movies => {
+        this.setState({
+          movies: JSON.parse(movies)
+        });
+      });
+  };
+
+  logData = () => {
+    console.log(this.state.movies);
   };
 
   render() {
-    const { passwords } = this.state;
-
     return (
       <div className="App">
         <Navbar />
+        <img
+          onClick={this.logData}
+          src={
+            "https://image.tmdb.org/t/p/original/" +
+            this.state.movies.backdrop_path
+          }
+        />
       </div>
     );
   }

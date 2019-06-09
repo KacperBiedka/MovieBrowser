@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const generatePassword = require("password-generator");
+const request = require("request");
 
 const app = express();
 
@@ -8,25 +8,28 @@ const app = express();
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Put all API endpoints under '/api'
-app.get("/api/passwords", (req, res) => {
-  const count = 5;
+request(
+  "https://api.themoviedb.org/3/movie/550?api_key=04c05e4935a42d8b5a5c5079e20e4c77",
+  (error, response, body) => {
+    if (!error) {
+      movies = body;
+      console.log(JSON.parse(body));
+      return movies;
+    } else {
+      console.log(error);
+    }
+  }
+);
 
-  // Generate some passwords
-  const passwords = Array.from(Array(count).keys()).map(i =>
-    generatePassword(12, false)
-  );
-
-  // Return them as json
-  res.json(passwords);
-
-  console.log(`Sent ${count} passwords`);
+app.get("/api/movies", (req, res, next) => {
+  res.json(movies);
 });
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port);
