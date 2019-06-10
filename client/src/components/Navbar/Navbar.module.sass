@@ -2,46 +2,48 @@
 
 
 .mainNavDiv
-    height: 100px
+    height: 80px
     width: 100vw
     background: $background-black
     padding: 5px
+    position: fixed
+    z-index: 2
 
 .logoDiv
     display: inline-block
     float: left
     vertical-align: middle
-    padding: 12.5px
+    padding: 10px
     @media (max-width: 850px)
-        padding-top: 25px
+        padding-top: 20px
     @media (max-width: 600px)
         display: none
 
 .TMDBlogo
-    height: 75px
+    height: 60px
     @media (max-width: 850px)
-        height: 50px
+        height: 40px
     
 
 .inputDiv
     display: inline-block
     vertical-align: middle
     float: right
-    padding: 25px
+    padding: 20px
     @media (max-width: 600px)
         display: block
         margin: auto
         float: none
 
 .searchInput
-    height: 30px
+    height: 24px
     width: 530px
     background: #242526
     border: solid 1px $border-grey
     border-right: none
     font-family: $rale
     font-size: 20px
-    padding: 10px
+    padding: 8px
     color: $border-grey
     &:focus
         outline: none
@@ -51,7 +53,7 @@
         width: 70vw
 
 .searchIconDiv
-    height: 50px
+    height: 40px
     width: 40px
     display: inline-block
     vertical-align: middle
@@ -64,7 +66,7 @@
     cursor: pointer
 
 .searchIcon
-    margin-top: 10px
+    margin-top: 8px
     font-size: 30px
     display: block
     vertical-align: middle
