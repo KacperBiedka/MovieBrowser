@@ -107,6 +107,25 @@ app.get("/api/score", (req, res, next) => {
   res.json(score);
 });
 
+// Get upcoming movies
+
+request(
+  `https://api.themoviedb.org/3/movie/upcoming?${key}&language=en-US&page=1`,
+  (error, response, body) => {
+    if (!error) {
+      upcoming = body;
+      console.log(JSON.parse(body));
+      return upcoming;
+    } else {
+      console.log(error);
+    }
+  }
+);
+
+app.get("/api/upcoming", (req, res, next) => {
+  res.json(upcoming);
+});
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 // app.get("*", (req, res) => {

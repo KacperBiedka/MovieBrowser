@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import classes from "./Home.module.sass";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actionTypes";
 
 import CarouselComp from "../../components/CarouselComp/CarouselComp";
 import MovieList from "../../components/MovieList/MovieList";
@@ -17,10 +19,12 @@ class Home extends Component {
     fetch(`/api/genres`)
       .then(res => res.json())
       .then(genres => {
-        console.log(JSON.parse(genres));
+        const genresParsed = JSON.parse(genres);
+        console.log(genresParsed);
         this.setState({
-          genres: JSON.parse(genres)
+          genres: genresParsed
         });
+        this.props.getGenres(genresParsed);
       });
   };
 
@@ -28,13 +32,28 @@ class Home extends Component {
     return (
       <div className={classes.mainHomeDiv}>
         <CarouselComp />
-        <MovieList path="popular" />
-        <MovieList path="score" />
-        <MovieList path="revenue" />
-        <MovieList path="popular" />
+        <MovieList path="popular" title="Popular" />
+        <MovieList path="score" title="Highest Avarage Score" />
+        <MovieList path="revenue" title="Highest Revenue" />
+        <MovieList path="upcoming" title="Upcoming" />
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    genres: state.genres
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getGenres: genres => dispatch(actionTypes.getGenres(genres))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

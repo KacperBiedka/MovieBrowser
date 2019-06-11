@@ -51,7 +51,7 @@ class CarouselComp extends Component {
       >
         {this.state.data.map(img => {
           return (
-            <div className={classes.imageDiv}>
+            <div key={img.imgSrc} className={classes.imageDiv}>
               <img
                 className={classes.carouselImage}
                 onClick={this.logData}
