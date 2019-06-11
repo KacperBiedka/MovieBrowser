@@ -11,6 +11,26 @@ const key = "api_key=04c05e4935a42d8b5a5c5079e20e4c77";
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Put all API endpoints under '/api'
+
+// Get the list of genres
+
+request(
+  `https://api.themoviedb.org/3/genre/movie/list?${key}&language=en-US`,
+  (error, response, body) => {
+    if (!error) {
+      genres = body;
+      console.log(JSON.parse(body));
+      return genres;
+    } else {
+      console.log(error);
+    }
+  }
+);
+
+app.get("/api/genres", (req, res, next) => {
+  res.json(genres);
+});
+
 // Get latest movies
 
 request(

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import classes from "./MovieList.module.sass";
 
+import MovieCard from "../MovieCard/MovieCard";
+
 class MovieList extends Component {
   state = {
     movies: [],
@@ -23,7 +25,8 @@ class MovieList extends Component {
         JSON.parse(movies).results.map(movie => {
           data.push({
             imgSrc: "https://image.tmdb.org/t/p/original/" + movie.poster_path,
-            title: movie.title
+            title: movie.title,
+            genre: movie.genre_ids
           });
           this.setState({
             data: data
@@ -36,7 +39,13 @@ class MovieList extends Component {
     return (
       <div className={classes.mainMovieListDiv}>
         {this.state.data.map(movie => {
-          return <img className={classes.posterImage} src={movie.imgSrc} />;
+          return (
+            <MovieCard
+              imagePath={movie.imgSrc}
+              title={movie.title}
+              genre={movie.genre}
+            />
+          );
         })}
       </div>
     );
