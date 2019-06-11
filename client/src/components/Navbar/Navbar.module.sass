@@ -7,7 +7,7 @@
     background: $background-black
     padding: 5px
     position: fixed
-    z-index: 2
+    z-index: 5
 
 .logoDiv
     display: inline-block
@@ -45,12 +45,15 @@
     font-size: 20px
     padding: 8px
     color: $border-grey
+    border-radius: 5px 0px 0px 5px
     &:focus
         outline: none
     @media (max-width: 850px)
         width: 50vw
     @media (max-width: 600px)
         width: 70vw
+    @media (max-width: 400px)
+        width: 50vw
 
 .searchIconDiv
     height: 40px
@@ -64,10 +67,14 @@
     color: $border-grey
     text-align: center
     cursor: pointer
+    border-radius: 0px 3px 3px 0px
+    @media (max-width: 600px)
+        float: none
+        margin: auto
+        margin-top: -7px
 
 .searchIcon
-    margin-top: 8px
+    margin-top: 5px
     font-size: 30px
     display: block
-    vertical-align: middle
 

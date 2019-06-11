@@ -14,7 +14,7 @@ class CarouselComp extends Component {
   };
 
   getMovies = () => {
-    fetch("/api/movies")
+    fetch("/api/latest")
       .then(res => res.json())
       .then(movies => {
         console.log(JSON.parse(movies));
