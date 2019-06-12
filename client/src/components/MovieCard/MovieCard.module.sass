@@ -4,7 +4,11 @@
     display: inline-block
     text-align: center
     vertical-align: top
-    margin: 0px 37.5px 37.5px 37.5px 
+    margin: 0px 37.5px 37.5px 37.5px
+    @media (max-width: 500px)
+        display: block
+        margin: auto
+        margin-bottom: 37.5px 
 
 .movieCardImage
     width: 250px 
@@ -12,6 +16,10 @@
     @media (max-width: 950px)
         width: 200px !important
         height: 300px !important
+    @media (max-width: 500px)
+        width: 250px 
+        height: 375px
+        margin: auto
 
 .movieCardTitle
     display: block
@@ -32,6 +40,10 @@
         text-decoration: underline
     @media (max-width: 950px)
         width: 200px
+    @media (max-width: 500px)
+        margin: auto
+        width: 250px
+        text-align: center
 
 
 .movieCardGenre
@@ -42,3 +54,5 @@
     color: #fff
     border-bottom: solid 1px #ccc
     padding-bottom: 5px
+    @media (max-width: 500px)
+        text-align: center
