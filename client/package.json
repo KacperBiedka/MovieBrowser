@@ -11,8 +11,9 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-slick": "^0.24.0",
     "redux": "^4.0.1",
-    "sweet-scroll": "^4.0.0"
+    "slick-carousel": "^1.8.1"
   },
   "proxy": "http://localhost:5000",
   "scripts": {

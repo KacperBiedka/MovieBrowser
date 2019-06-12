@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./MovieList.module.sass";
 import { connect } from "react-redux";
-import SweetScroll from "sweet-scroll";
+import Slider from "react-slick";
 
 import MovieCard from "../MovieCard/MovieCard";
 
@@ -47,26 +47,34 @@ class MovieList extends Component {
       });
   };
 
-  scroller = new SweetScroll(
-    {
-      duration: 1000
-    },
-    document.getElementById("container")
-  );
-
-  scroll = () => {
-    this.scroller.toLeft(-500);
+  settings = {
+    dots: false,
+    slidesToShow: 5,
+    speed: 400,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3
+        }
+      }
+    ]
   };
 
   render() {
     return (
       <div>
         <div className={classes.mainMovieListDiv}>
-          <button onClick={this.scroll} className={classes.scrollButton}>
-            Scroll
-          </button>
           <h5 className={classes.movieListHeader}>{this.props.title}</h5>
-          <div id="container" className={classes.movieCardsContainer}>
+          <Slider className={classes.movieCardsContainer} {...this.settings}>
             {this.state.data.map(movie => {
               return (
                 <MovieCard
@@ -75,9 +83,12 @@ class MovieList extends Component {
                   title={movie.title}
                   genre={movie.genre}
                 />
+                // <div dsiapl>
+                //   <img src={movie.imgSrc} width="250px" />
+                // </div>
               );
             })}
-          </div>
+          </Slider>
         </div>
       </div>
     );
