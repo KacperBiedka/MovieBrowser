@@ -13,6 +13,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.getGenres();
+    this.getSpecifiedMovie();
   };
 
   getGenres = () => {
@@ -25,6 +26,14 @@ class Home extends Component {
           genres: genresParsed
         });
         this.props.getGenres(genresParsed);
+      });
+  };
+
+  getSpecifiedMovie = () => {
+    fetch(`/api/movieID/111`)
+      .then(res => res.json())
+      .then(movieData => {
+        console.log(JSON.parse(movieData));
       });
   };
 

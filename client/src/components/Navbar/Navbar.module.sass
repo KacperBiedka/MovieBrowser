@@ -7,7 +7,7 @@
     background: $background-black
     position: fixed
     z-index: 5
-    border-bottom: solid 1px $pink
+    border-bottom: solid 2px lighten($background-black, 25)
 
 .inputDiv
     display: block
@@ -25,10 +25,10 @@
     font-family: $rale
     font-size: 20px
     padding: 8px
-    color: lighten($background-black, 20)
+    color: lighten($background-black, 25)
     border-radius: 5px 0px 0px 5px
     &::placeholder
-        color: lighten($background-black, 20)
+        color: lighten($background-black, 25)
     &:focus
         outline: none
     @media (max-width: 850px)
