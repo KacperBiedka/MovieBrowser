@@ -126,6 +126,26 @@ app.get("/api/upcoming", (req, res, next) => {
   res.json(upcoming);
 });
 
+// Get a specified movie by the id
+
+app.get("/api/movieID/:movieID", (req, res, next) => {
+  request(
+    `https://api.themoviedb.org/3/movie/${
+      req.params.movieID
+    }?${key}&language=en-US`,
+    (error, response, body) => {
+      if (!error) {
+        movieData = body;
+        console.log(JSON.parse(body));
+        return movieData;
+      } else {
+        console.log(error);
+      }
+    }
+  );
+  res.json(movieData);
+});
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 // app.get("*", (req, res) => {
