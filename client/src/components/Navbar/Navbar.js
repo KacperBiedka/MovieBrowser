@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TMDBLogo from "./TMDBLogo.svg";
 import classes from "./Navbar.module.sass";
 
 class Navbar extends Component {
@@ -7,9 +6,6 @@ class Navbar extends Component {
   render() {
     return (
       <div className={classes.mainNavDiv}>
-        <div className={classes.logoDiv}>
-          <img alt="" className={classes.TMDBlogo} src={TMDBLogo} />
-        </div>
         <div className={classes.inputDiv}>
           <input
             className={classes.searchInput}

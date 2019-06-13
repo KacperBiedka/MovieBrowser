@@ -29,7 +29,7 @@ class MovieList extends Component {
           movies: parsedMovies
         });
         let data = [];
-        parsedMovies.results.map(movie => {
+        parsedMovies.results.forEach(movie => {
           let genresName = [];
           genresName.push(
             this.props.genres.find(key => key.id === movie.genre_ids[0])

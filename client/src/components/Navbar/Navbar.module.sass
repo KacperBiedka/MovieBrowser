@@ -2,50 +2,33 @@
 
 
 .mainNavDiv
-    height: 80px
+    height: 70px
     width: 100vw
     background: $background-black
-    padding: 5px
     position: fixed
     z-index: 5
-
-.logoDiv
-    display: inline-block
-    float: left
-    vertical-align: middle
-    padding: 10px
-    @media (max-width: 850px)
-        padding-top: 20px
-    @media (max-width: 600px)
-        display: none
-
-.TMDBlogo
-    height: 60px
-    @media (max-width: 850px)
-        height: 40px
-    
+    border-bottom: solid 1px $pink
 
 .inputDiv
-    display: inline-block
-    vertical-align: middle
-    float: right
-    padding: 20px
-    @media (max-width: 600px)
-        display: block
-        margin: auto
-        float: none
+    display: block
+    text-align: center
+    margin: auto
+    height: 70px
 
 .searchInput
     height: 24px
     width: 530px
-    background: #242526
-    border: solid 1px $border-grey
+    background: lighten($background-black, 5)
+    border: solid 1px lighten($background-black, 15)
     border-right: none
+    margin-top: 15px
     font-family: $rale
     font-size: 20px
     padding: 8px
-    color: $border-grey
+    color: lighten($background-black, 20)
     border-radius: 5px 0px 0px 5px
+    &::placeholder
+        color: lighten($background-black, 20)
     &:focus
         outline: none
     @media (max-width: 850px)
@@ -58,23 +41,22 @@
 .searchIconDiv
     height: 40px
     width: 40px
+    margin-bottom: 7px
     display: inline-block
     vertical-align: middle
-    float: right
-    background: #242526
-    border: solid 1px $border-grey
+    background: lighten($background-black, 5)
+    border: solid 1px lighten($background-black, 15)
     border-left: none
-    color: $border-grey
     text-align: center
     cursor: pointer
     border-radius: 0px 3px 3px 0px
-    @media (max-width: 600px)
-        float: none
-        margin: auto
-        margin-top: -7px
 
 .searchIcon
     margin-top: 5px
     font-size: 30px
     display: block
+    color: lighten($background-black, 20)
+    transition: color 0.4s ease
+    &:hover
+        color: $pink
 

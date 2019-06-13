@@ -22,7 +22,7 @@ class CarouselComp extends Component {
           movies: JSON.parse(movies)
         });
         let data = [];
-        JSON.parse(movies).results.map(movie => {
+        JSON.parse(movies).results.forEach(movie => {
           data.push({
             imgSrc:
               "https://image.tmdb.org/t/p/original/" + movie.backdrop_path,
@@ -53,6 +53,7 @@ class CarouselComp extends Component {
           return (
             <div key={img.imgSrc} className={classes.imageDiv}>
               <img
+                alt=""
                 className={classes.carouselImage}
                 onClick={this.logData}
                 src={img.imgSrc}
