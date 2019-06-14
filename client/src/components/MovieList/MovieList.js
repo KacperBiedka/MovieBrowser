@@ -16,35 +16,42 @@ class MovieList extends Component {
     this.getMovies();
   };
 
-  getMovies = async () => {
-    await this.setState({
-      genres: this.props.genres
-    });
-    fetch(`/api/${this.props.path}`)
-      .then(res => res.json())
-      .then(movies => {
-        const parsedMovies = JSON.parse(movies);
-        console.log(parsedMovies);
-        this.setState({
-          movies: parsedMovies
-        });
-        let data = [];
-        parsedMovies.results.forEach(movie => {
-          let genresName = [];
-          genresName.push(
-            this.props.genres.find(key => key.id === movie.genre_ids[0])
-          );
-          console.log(genresName);
-          data.push({
-            imgSrc: "https://image.tmdb.org/t/p/original/" + movie.poster_path,
-            title: movie.title,
-            genre: genresName[0].name
-          });
+  getMovies = () => {
+    console.log(this.props.genres);
+    setTimeout(() => {
+      fetch(`/api/${this.props.path}`)
+        .then(res => res.json())
+        .then(movies => {
+          const parsedMovies = JSON.parse(movies);
+          console.log(parsedMovies);
           this.setState({
-            data: data
+            movies: parsedMovies
           });
+          let data = [];
+          parsedMovies.results.forEach(movie => {
+            let genresName = [];
+            console.log(this.props.genres);
+            genresName.push(
+              this.props.genres.find(key => key.id === movie.genre_ids[0])
+            );
+            console.log(genresName);
+            data.push({
+              imgSrc:
+                "https://image.tmdb.org/t/p/original/" + movie.poster_path,
+              title: movie.title,
+              genre: genresName[0].name
+            });
+            this.setState({
+              data: data
+            });
+          });
+        })
+        .then(() => {
+          if (this.props.closeLoadingScreen) {
+            this.props.closeLoadingScreen();
+          }
         });
-      });
+    }, 1000);
   };
 
   settings = {
