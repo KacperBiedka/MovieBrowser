@@ -10,9 +10,9 @@ import MovieList from "../../components/MovieList/MovieList";
 class Home extends Component {
   state = {
     genres: [],
-    displayContent: "none",
+    loaderDisplay: "block",
     showLoader: true,
-    loader: <LoadingScreen visible={this.showLoader} />
+    loader: null
   };
 
   componentDidMount = () => {
@@ -43,21 +43,23 @@ class Home extends Component {
 
   closeLoadingScreen = () => {
     this.setState({
-      showLoader: false,
-      displayContent: "block"
+      showLoader: false
     });
     setTimeout(() => {
       this.setState({
-        loader: null
+        loaderDisplay: "none"
       });
-    }, 1000);
+    });
   };
 
   render() {
     return (
       <div className={classes.mainHomeDiv}>
-        {this.state.loader}
-        <div style={{ display: this.state.displayContent }}>
+        <div>
+          <LoadingScreen
+            visible={this.state.showLoader}
+            display={this.state.loaderDisplay}
+          />
           <CarouselComp />
           <MovieList path="popular" title="Popular" />
           <MovieList path="score" title="Highest Avarage Score" />

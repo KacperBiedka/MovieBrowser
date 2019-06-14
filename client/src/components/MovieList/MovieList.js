@@ -51,7 +51,7 @@ class MovieList extends Component {
             this.props.closeLoadingScreen();
           }
         });
-    }, 1000);
+    }, 100);
   };
 
   settings = {
