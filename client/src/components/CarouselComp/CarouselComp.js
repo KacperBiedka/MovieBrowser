@@ -26,7 +26,8 @@ class CarouselComp extends Component {
           data.push({
             imgSrc:
               "https://image.tmdb.org/t/p/original/" + movie.backdrop_path,
-            title: movie.title
+            title: movie.title,
+            id: movie.id
           });
           this.setState({
             data: data
@@ -35,11 +36,13 @@ class CarouselComp extends Component {
       });
   };
 
-  logData = () => {
+  logData = id => {
     console.log(this.state.movies);
     console.log(this.state.data);
     console.log(this.state.data[1]);
+    console.log("THE ID IS: " + id);
   };
+
   render() {
     return (
       <Carousel
@@ -51,19 +54,19 @@ class CarouselComp extends Component {
       >
         {this.state.data.map(img => {
           return (
-            <div key={img.imgSrc} className={classes.imageDiv}>
-              <img
-                alt=""
-                className={classes.carouselImage}
+            <div
+              onClick={() => this.logData(img.id)}
+              key={img.imgSrc}
+              className={classes.imageDiv}
+            >
+              <img alt="" className={classes.carouselImage} src={img.imgSrc} />
+              <h5
                 onClick={this.logData}
-                src={img.imgSrc}
-              />
-              <h5 className={"legend " + classes.carouselHeader}>
+                className={"legend " + classes.carouselHeader}
+              >
                 {img.title}
               </h5>
-              <h5 className={"legend " + classes.carouselLegend}>
-                See details
-              </h5>
+              <h5 className={"legend " + classes.carouselLegend}>Latest</h5>
             </div>
           );
         })}

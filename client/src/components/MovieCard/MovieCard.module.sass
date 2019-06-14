@@ -21,29 +21,26 @@
         height: 375px
         margin: auto
 
-.movieCardTitle
-    display: block
-    font-family: $fira
-    font-size: 20px
-    margin: 5px 0px
-    white-space: pre-wrap
-    word-wrap: break-word
-    text-align: left
-    width: 250px
-    height: 50px
-    padding-top: 10px
-    font-weight: 200
-    color: #c1c1c1
-    cursor: pointer
-    &:hover
-        color: #fff
-        text-decoration: underline
-    @media (max-width: 950px)
-        width: 200px
-    @media (max-width: 500px)
-        margin: auto
-        width: 250px
-        text-align: center
+// .movieCardTitle
+//     display: block
+//     font-family: $fira
+//     font-size: 20px
+//     margin: 5px 0px
+//     white-space: pre-wrap
+//     word-wrap: break-word
+//     text-align: left
+//     width: 250px
+//     height: 50px
+//     padding-top: 10px
+//     font-weight: 200
+//     color: #c1c1c1
+//     cursor: pointer
+//     @media (max-width: 950px)
+//         width: 200px
+//     @media (max-width: 500px)
+//         margin: auto
+//         width: 250px
+//         text-align: center
 
 
 .movieCardGenre
@@ -56,3 +53,45 @@
     padding-bottom: 5px
     @media (max-width: 500px)
         text-align: center
+
+.movieCardTitle
+    margin: 5px 0px
+    padding-top: 10px
+    font-weight: 200
+    color: #c1c1c1
+    font-family: $fira
+    font-size: 20px
+    cursor: pointer
+    white-space: pre-wrap
+    word-break: break-word
+    position: relative
+    text-decoration: none
+    padding-bottom: 8px
+    &:before, &:after
+        content: ""
+        position: absolute
+        bottom: 2px
+        left: 0
+        right: 0
+        height: 2px
+        background-color: $pink
+    &:before
+        opacity: 0
+        transform: translateY(-8px)
+        transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s
+    &:after
+        opacity: 0
+        transform: translateY(4px)
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s
+    &:hover
+        &:before, &:after
+            opacity: 1
+            transform: translateY(0)
+    &:focus
+        &:before, &:after
+            opacity: 1
+            transform: translateY(0)
+    &:hover:before, &:focus:before
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s
+    &:hover:after, &:focus:after
+        transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s
