@@ -134,16 +134,11 @@ app.get("/api/movieID/:movieID", (req, res, next) => {
       req.params.movieID
     }?${key}&language=en-US`,
     (error, response, body) => {
-      if (!error) {
-        movieData = body;
-        console.log(JSON.parse(body));
-        return movieData;
-      } else {
-        console.log(error);
+      if (!error && response.statusCode == 200) {
+        res.json(body);
       }
     }
   );
-  res.json(movieData);
 });
 
 // The "catchall" handler: for any request that doesn't

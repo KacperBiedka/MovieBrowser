@@ -6,13 +6,15 @@ import * as actionTypes from "../../store/actionTypes";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import CarouselComp from "../../components/CarouselComp/CarouselComp";
 import MovieList from "../../components/MovieList/MovieList";
+import MovieDetails from "../../components/MovieDetails/MovieDetails";
 
 class Home extends Component {
   state = {
     genres: [],
     loaderDisplay: "block",
     showLoader: true,
-    loader: null
+    loader: null,
+    movieDetails: null
   };
 
   componentDidMount = () => {
@@ -52,6 +54,18 @@ class Home extends Component {
     });
   };
 
+  toggleMovieDetails = () => {
+    if (this.state.movieDetails) {
+      this.setState({
+        movieDetails: null
+      });
+    } else {
+      this.setState({
+        movieDetails: <MovieDetails />
+      });
+    }
+  };
+
   render() {
     return (
       <div className={classes.mainHomeDiv}>
@@ -60,7 +74,8 @@ class Home extends Component {
             visible={this.state.showLoader}
             display={this.state.loaderDisplay}
           />
-          <CarouselComp />
+          {this.state.movieDetails}
+          <CarouselComp toggleMovieDetails={this.toggleMovieDetails} />
           <MovieList path="popular" title="Popular" />
           <MovieList path="score" title="Highest Avarage Score" />
           <MovieList path="revenue" title="Highest Revenue" />

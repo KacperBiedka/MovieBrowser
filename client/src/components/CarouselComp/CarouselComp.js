@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import * as actionTypes from "../../store/actionTypes";
 import classes from "./CarouselComp.module.sass";
 
 class CarouselComp extends Component {
@@ -39,8 +42,17 @@ class CarouselComp extends Component {
   logData = id => {
     console.log(this.state.movies);
     console.log(this.state.data);
-    console.log(this.state.data[1]);
+    // console.log(this.state.data[1]);
     console.log("THE ID IS: " + id);
+    setTimeout(() => {
+      fetch(`/api/movieID/${id}`)
+        .then(res => res.json())
+        .then(movieData => {
+          console.log(JSON.parse(movieData).title);
+          this.props.getMovieDetails(JSON.parse(movieData));
+          this.props.toggleMovieDetails();
+        });
+    }, 100);
   };
 
   render() {
@@ -54,19 +66,17 @@ class CarouselComp extends Component {
       >
         {this.state.data.map(img => {
           return (
-            <div
-              onClick={() => this.logData(img.id)}
-              key={img.imgSrc}
-              className={classes.imageDiv}
-            >
+            <div key={img.imgSrc} className={classes.imageDiv}>
               <img alt="" className={classes.carouselImage} src={img.imgSrc} />
-              <h5
-                onClick={this.logData}
-                className={"legend " + classes.carouselHeader}
-              >
+              <h5 className={"legend " + classes.carouselHeader}>
                 {img.title}
               </h5>
-              <h5 className={"legend " + classes.carouselLegend}>Latest</h5>
+              <h5
+                onClick={() => this.logData(img.id)}
+                className={"legend " + classes.carouselLegend}
+              >
+                See details
+              </h5>
             </div>
           );
         })}
@@ -75,4 +85,20 @@ class CarouselComp extends Component {
   }
 }
 
-export default CarouselComp;
+const mapStateToProps = state => {
+  return {
+    genres: state.genres
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getMovieDetails: movieDetails =>
+      dispatch(actionTypes.getMovieDetails(movieDetails))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CarouselComp);
