@@ -39,7 +39,7 @@ class CarouselComp extends Component {
       });
   };
 
-  logData = id => {
+  getMovieDetailsData = id => {
     console.log(this.state.movies);
     console.log(this.state.data);
     // console.log(this.state.data[1]);
@@ -50,9 +50,12 @@ class CarouselComp extends Component {
         .then(movieData => {
           console.log(JSON.parse(movieData).title);
           this.props.getMovieDetails(JSON.parse(movieData));
-          this.props.toggleMovieDetails();
+          setTimeout(() => {
+            this.props.changeLoadingState(false);
+          }, 1000);
         });
     }, 100);
+    this.props.toggleMovieDetails();
   };
 
   render() {
@@ -72,7 +75,7 @@ class CarouselComp extends Component {
                 {img.title}
               </h5>
               <h5
-                onClick={() => this.logData(img.id)}
+                onClick={() => this.getMovieDetailsData(img.id)}
                 className={"legend " + classes.carouselLegend}
               >
                 See details
@@ -94,7 +97,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMovieDetails: movieDetails =>
-      dispatch(actionTypes.getMovieDetails(movieDetails))
+      dispatch(actionTypes.getMovieDetails(movieDetails)),
+    changeLoadingState: loading =>
+      dispatch(actionTypes.changeLoadingState(loading))
   };
 };
 

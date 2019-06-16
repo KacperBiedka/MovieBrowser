@@ -17,29 +17,26 @@ class MovieList extends Component {
   };
 
   getMovies = () => {
-    console.log(this.props.genres);
     setTimeout(() => {
       fetch(`/api/${this.props.path}`)
         .then(res => res.json())
         .then(movies => {
           const parsedMovies = JSON.parse(movies);
-          console.log(parsedMovies);
           this.setState({
             movies: parsedMovies
           });
           let data = [];
           parsedMovies.results.forEach(movie => {
             let genresName = [];
-            console.log(this.props.genres);
             genresName.push(
               this.props.genres.find(key => key.id === movie.genre_ids[0])
             );
-            console.log(genresName);
             data.push({
               imgSrc:
                 "https://image.tmdb.org/t/p/original/" + movie.poster_path,
               title: movie.title,
-              genre: genresName[0].name
+              genre: genresName[0].name,
+              id: movie.id
             });
             this.setState({
               data: data
@@ -100,10 +97,12 @@ class MovieList extends Component {
             {this.state.data.map(movie => {
               return (
                 <MovieCard
+                  toggleMovieDetails={this.props.toggleMovieDetails}
                   key={movie.imgSrc}
                   imagePath={movie.imgSrc}
                   title={movie.title}
                   genre={movie.genre}
+                  id={movie.id}
                 />
                 // <div dsiapl>
                 //   <img src={movie.imgSrc} width="250px" />

@@ -61,7 +61,12 @@ class Home extends Component {
       });
     } else {
       this.setState({
-        movieDetails: <MovieDetails />
+        movieDetails: (
+          <MovieDetails
+            animated={true}
+            toggleMovieDetails={this.toggleMovieDetails}
+          />
+        )
       });
     }
   };
@@ -76,10 +81,23 @@ class Home extends Component {
           />
           {this.state.movieDetails}
           <CarouselComp toggleMovieDetails={this.toggleMovieDetails} />
-          <MovieList path="popular" title="Popular" />
-          <MovieList path="score" title="Highest Avarage Score" />
-          <MovieList path="revenue" title="Highest Revenue" />
           <MovieList
+            toggleMovieDetails={this.toggleMovieDetails}
+            path="popular"
+            title="Popular"
+          />
+          <MovieList
+            toggleMovieDetails={this.toggleMovieDetails}
+            path="score"
+            title="Highest Avarage Score"
+          />
+          <MovieList
+            toggleMovieDetails={this.toggleMovieDetails}
+            path="revenue"
+            title="Highest Revenue"
+          />
+          <MovieList
+            toggleMovieDetails={this.toggleMovieDetails}
             closeLoadingScreen={this.closeLoadingScreen}
             path="upcoming"
             title="Upcoming"

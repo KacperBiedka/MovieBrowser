@@ -4,8 +4,13 @@
     position: fixed
     z-index: 9
     background: $background-black
-    width: 100vw
     height: 100vh
+    width: 100vw
+    max-width: 1920px
+    max-height: 1080px
+    background-size: cover                   
+    background-repeat: no-repeat
+    background-position: center center
 
 .opacityLayerDiv
     position: fixed
@@ -14,6 +19,17 @@
     height: 100vh
     background: rgba(0,0,0,0.9)
     color: #fff
+
+.chevronDiv
+    display: block
+    width: 100%
+    height: 50px
+
+.chevronIcon
+    font-size: 40px
+    margin-top: 25px
+    margin-left: 25px
+    cursor: pointer
 
 .titleSectionDiv
     display: inline-block
@@ -26,7 +42,7 @@
     vertical-align: top
 
 .movieTitleDiv
-    margin-top: 150px
+    margin-top: 100px
     text-align: center
     width: 90%
     padding-left: 5%
@@ -55,18 +71,46 @@
     border-top: solid 1px $pink
     border-bottom: solid 1px $pink
     height: 90vh
-    margin-top: 5vh
+    margin-top: calc(5vh - 50px)
 
 .movieInfoDiv ul 
     text-align: center
     height: 80vh
-    padding-top: 5vh
+    padding-top: 7vh
     padding-left: 0
     list-style: none
 
 .movieInfoDiv ul li
     width: 100%
     font-family: $fira
-    font-size: 35px
+    font-size: 30px
     font-weight: 200
     padding-bottom: 60px
+
+.loadingContainer
+    position: fixed
+    z-index: 9
+    background: $background-black
+    width: 100vw
+    height: 100vh
+    max-height: 1080px
+
+.loadingDiv 
+    display: block
+    margin: auto
+    margin-top: 40vh
+    width: 50px
+    height: 50px
+    border: 3px solid rgba(255,255,255,.3)
+    border-radius: 50%
+    border-top-color: #fff
+    animation: spin 1s ease-in-out infinite
+    -webkit-animation: spin 1s ease-in-out infinite
+
+@keyframes spin 
+    to
+        -webkit-transform: rotate(360deg)
+
+@-webkit-keyframes spin 
+    to 
+        -webkit-transform: rotate(360deg)
