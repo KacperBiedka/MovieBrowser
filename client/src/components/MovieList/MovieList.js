@@ -56,7 +56,6 @@ class MovieList extends Component {
     slidesToShow: 5,
     speed: 400,
     slidesToScroll: 2,
-    lazyLoad: "progressive",
     responsive: [
       {
         breakpoint: 1500,

@@ -61,8 +61,7 @@ class MovieDetails extends Component {
               <div className={classes.opacityLayerDiv}>
                 <div
                   className={
-                    "animated fadeInDown fast " +
-                    classes.movieDetailsContainerDiv
+                    "animated fadeIn fast " + classes.movieDetailsContainerDiv
                   }
                 >
                   <div className={classes.chevronDiv}>
@@ -144,7 +143,7 @@ class MovieDetails extends Component {
             <div className={classes.opacityLayerDiv}>
               <div
                 className={
-                  "animated fadeInDown fast " + classes.movieDetailsContainerDiv
+                  "animated fadeIn fast " + classes.movieDetailsContainerDiv
                 }
               >
                 <div className={classes.chevronDiv}>

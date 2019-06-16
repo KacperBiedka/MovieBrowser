@@ -1,8 +1,24 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actionTypes";
 import classes from "./Navbar.module.sass";
 
 class Navbar extends Component {
-  state = {};
+  state = {
+    searchValue: ""
+  };
+
+  changeInputState = e => {
+    this.setState({
+      searchValue: e.target.value
+    });
+    console.log(e.target.value);
+  };
+
+  submitSearchValue = () => {
+    this.props.getSearchValue(this.state.searchValue);
+  };
+
   render() {
     return (
       <div className={classes.mainNavDiv}>
@@ -11,9 +27,16 @@ class Navbar extends Component {
             className={classes.searchInput}
             placeholder="search"
             type="text"
+            onChange={this.changeInputState}
+            value={this.state.searchValue}
           />
           <div className={classes.searchIconDiv}>
-            <i className={"material-icons " + classes.searchIcon}>search</i>
+            <i
+              onClick={this.submitSearchValue}
+              className={"material-icons " + classes.searchIcon}
+            >
+              search
+            </i>
           </div>
         </div>
       </div>
@@ -21,4 +44,13 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapDispatchToProps = dispatch => {
+  return {
+    getSearchValue: search => dispatch(actionTypes.getSearchValue(search))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Navbar);

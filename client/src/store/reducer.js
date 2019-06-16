@@ -14,6 +14,14 @@ const getGenres = (state = initialState, action) => {
   };
 };
 
+const getSearchValue = (state = initialState, action) => {
+  const search = action.search;
+  return {
+    ...state,
+    search
+  };
+};
+
 const getMovieDetails = (state = initialState, action) => {
   const movieDetails = action.movieDetails;
   return {
@@ -38,6 +46,8 @@ const reducer = (state = initialState, action) => {
       return getMovieDetails(state, action);
     case actionTypes.CHANGE_LOADING:
       return changeLoadingState(state, action);
+    case actionTypes.GET_SEARCH:
+      return getSearchValue(state, action);
     default:
       return state;
   }
