@@ -26,15 +26,46 @@ class CarouselComp extends Component {
         });
         let data = [];
         JSON.parse(movies).results.forEach(movie => {
-          data.push({
-            imgSrc:
-              "https://image.tmdb.org/t/p/original/" + movie.backdrop_path,
-            title: movie.title,
-            id: movie.id
-          });
-          this.setState({
-            data: data
-          });
+          if (window.innerWidth > 1280) {
+            data.push({
+              imgSrc:
+                "https://image.tmdb.org/t/p/original/" + movie.backdrop_path,
+              title: movie.title,
+              id: movie.id
+            });
+            this.setState({
+              data: data
+            });
+          }
+          if (window.innerWidth <= 1280) {
+            data.push({
+              imgSrc: "https://image.tmdb.org/t/p/w1280/" + movie.backdrop_path,
+              title: movie.title,
+              id: movie.id
+            });
+            this.setState({
+              data: data
+            });
+          }
+          if (window.innerWidth <= 780) {
+            data.push({
+              imgSrc: "https://image.tmdb.org/t/p/w780/" + movie.backdrop_path,
+              title: movie.title,
+              id: movie.id
+            });
+            this.setState({
+              data: data
+            });
+          } else if (window.innerWidth <= 300) {
+            data.push({
+              imgSrc: "https://image.tmdb.org/t/p/w300/" + movie.backdrop_path,
+              title: movie.title,
+              id: movie.id
+            });
+            this.setState({
+              data: data
+            });
+          }
         });
       });
   };

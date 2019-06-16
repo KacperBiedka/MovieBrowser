@@ -25,6 +25,7 @@ class MovieList extends Component {
           this.setState({
             movies: parsedMovies
           });
+          console.log(parsedMovies);
           let data = [];
           parsedMovies.results.forEach(movie => {
             let genresName = [];
@@ -32,8 +33,7 @@ class MovieList extends Component {
               this.props.genres.find(key => key.id === movie.genre_ids[0])
             );
             data.push({
-              imgSrc:
-                "https://image.tmdb.org/t/p/original/" + movie.poster_path,
+              imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
               title: movie.title,
               genre: genresName[0].name,
               id: movie.id
@@ -56,6 +56,7 @@ class MovieList extends Component {
     slidesToShow: 5,
     speed: 400,
     slidesToScroll: 2,
+    lazyLoad: "progressive",
     responsive: [
       {
         breakpoint: 1500,

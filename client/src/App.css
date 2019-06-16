@@ -3,3 +3,7 @@ body {
   padding: 0;
   padding-bottom: 5vh;
 }
+
+div:focus {
+  outline: none;
+}

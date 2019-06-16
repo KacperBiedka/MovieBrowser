@@ -8,13 +8,24 @@ class MovieDetails extends Component {
   state = {
     movieDetailsClosed: false,
     displayContent: false,
-    mobile: false
+    mobile: false,
+    resolutionPath: "original"
   };
 
   componentDidMount = () => {
     this.setState({
       movieDetailsClosed: true
     });
+    if (window.innerWidth > 1280) {
+      this.setState({
+        resolutionPath: "original"
+      });
+    }
+    if (window.innerWidth <= 1280 && window.innerWidth >= 1000) {
+      this.setState({
+        resolutionPath: "w1280"
+      });
+    }
     if (window.innerWidth < 1000) {
       this.setState({
         mobile: true
@@ -39,9 +50,9 @@ class MovieDetails extends Component {
           !this.props.loading ? (
             <div
               style={{
-                background: `url(https://image.tmdb.org/t/p/original/${
-                  this.props.movieDetails.backdrop_path
-                })`,
+                background: `url(https://image.tmdb.org/t/p/${
+                  this.state.resolutionPath
+                }/${this.props.movieDetails.backdrop_path})`,
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat"
               }}
