@@ -34,6 +34,10 @@
 
 .movieTitleDiv
     width: 250px
+    margin: auto
+    @media (max-width: 950px)
+        width: 200px
+
 
 .movieCardTitle
     margin: 5px 0px
@@ -48,6 +52,9 @@
     position: relative
     text-decoration: none
     padding-bottom: 8px
+    @media (max-width: 500px)
+        text-align: center
+        
     &:before, &:after
         content: ""
         position: absolute

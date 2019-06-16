@@ -3,15 +3,14 @@
 .movieDetailsMainDiv
     position: fixed
     z-index: 9
-    background: $background-black
     height: 100vh
     width: 100vw
     max-width: 1920px
     max-height: 1080px
-    background-size: cover                   
-    background-repeat: no-repeat
-    background-position: center center
-
+    background: $background-black
+    @media (max-width: 1000px)
+        overflow: scroll
+        
 .opacityLayerDiv
     position: fixed
     z-index: 10
@@ -19,11 +18,16 @@
     height: 100vh
     background: rgba(0,0,0,0.9)
     color: #fff
+    @media (max-width: 1000px)
+        overflow: scroll
 
 .chevronDiv
     display: block
     width: 100%
     height: 50px
+    @media (max-width: 1000px)
+        height: 20px
+
 
 .chevronIcon
     font-size: 40px
@@ -35,35 +39,60 @@
     display: inline-block
     width: 50%
     vertical-align: top
+    @media (max-width: 1000px)
+        display: block
+        width: 100%
+        vertical-align: none
 
 .infoSectionDiv
     display: inline-block
     width: 50%
     vertical-align: top
+    @media (max-width: 1000px)
+        display: block
+        width: 100%
+        vertical-align: none
 
 .movieTitleDiv
     margin-top: 100px
     text-align: center
     width: 90%
     padding-left: 5%
+    @media (max-width: 1000px)
+        margin-top: 0
+        margin-bottom: 0
 
 .movieTitleHeader
     font-family: $rale
     font-size: 70px
     font-weight: 200
+    @media (max-width: 1000px)
+        font-size: 40px
+        text-decoration: underline
+        text-decoration-color: $pink
 
 .movieDescribtionDiv
     width: 95%
     padding-left: 5%
+    @media (max-width: 1000px)
+        width: 90%
+        margin: auto
+        padding-left: 0
+        text-align: center
+        padding-bottom: 10%
+        border-bottom: solid 1px lighten($background-black, 15)
+
 
 .movieDescribtionText
     font-family: $rale
     font-size: 35px
     font-weight: 200
+    @media (max-width: 1000px)
+        font-size: 27px
 
 .movieInfoDiv
     display: block
-    width: 800px
+    width: calc(90% - 100px)
     margin: auto
     background: $background-black
     opacity: 1 !important
@@ -72,6 +101,10 @@
     border-bottom: solid 1px $pink
     height: 90vh
     margin-top: calc(5vh - 50px)
+    @media (max-width: 1000px)
+        width: 90%
+        padding: 0 5%
+        height: 100%
 
 .movieInfoDiv ul 
     text-align: center
@@ -79,6 +112,8 @@
     padding-top: 7vh
     padding-left: 0
     list-style: none
+    @media (max-width: 1000px)
+        height: 100%
 
 .movieInfoDiv ul li
     width: 100%
@@ -86,6 +121,8 @@
     font-size: 30px
     font-weight: 200
     padding-bottom: 60px
+    @media (max-width: 1200px)
+        font-size: 25px
 
 .loadingContainer
     position: fixed

@@ -1,6 +1,6 @@
 @import '../../_variables.sass'
 
-.mainLoadingDiv
+.mainLoadingDiv 
     position: fixed
     z-index: 10
     width: 100%
@@ -13,61 +13,22 @@
     &::-webkit-scrollbar
         width: 0 !important
 
-.skCubeGrid
-  width: 60px
-  height: 60px
-  margin: auto
-  margin-top: 400px
-  .skCube
-    width: 33%
-    height: 33%
-    background-color: $pink
-    float: left
-    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
-    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
-  .skCube1
-    -webkit-animation-delay: 0.2s
-    animation-delay: 0.2s
-  .skCube2
-    -webkit-animation-delay: 0.3s
-    animation-delay: 0.3s
-  .skCube3
-    -webkit-animation-delay: 0.4s
-    animation-delay: 0.4s
-  .skCube4
-    -webkit-animation-delay: 0.1s
-    animation-delay: 0.1s
-  .skCube5
-    -webkit-animation-delay: 0.2s
-    animation-delay: 0.2s
-  .skCube6
-    -webkit-animation-delay: 0.3s
-    animation-delay: 0.3s
-  .skCube7
-    -webkit-animation-delay: 0s
-    animation-delay: 0s
-  .skCube8
-    -webkit-animation-delay: 0.1s
-    animation-delay: 0.1s
-  .skCube9
-    -webkit-animation-delay: 0.2s
-    animation-delay: 0.2s
+.loadingDiv 
+    display: block
+    margin: auto
+    margin-top: 40vh
+    width: 50px
+    height: 50px
+    border: 3px solid rgba(255,255,255,.3)
+    border-radius: 50%
+    border-top-color: #fff
+    animation: spin 1s ease-in-out infinite
+    -webkit-animation: spin 1s ease-in-out infinite
 
-@-webkit-keyframes sk-cubeGridScaleDelay
-  0%, 70%, 100%
-    -webkit-transform: scale3D(1, 1, 1)
-    transform: scale3D(1, 1, 1)
+@keyframes spin 
+    to
+        -webkit-transform: rotate(360deg)
 
-  35%
-    -webkit-transform: scale3D(0, 0, 1)
-    transform: scale3D(0, 0, 1)
-
-
-@keyframes sk-cubeGridScaleDelay
-  0%, 70%, 100%
-    -webkit-transform: scale3D(1, 1, 1)
-    transform: scale3D(1, 1, 1)
-
-  35%
-    -webkit-transform: scale3D(0, 0, 1)
-    transform: scale3D(0, 0, 1)
+@-webkit-keyframes spin 
+    to 
+        -webkit-transform: rotate(360deg)
