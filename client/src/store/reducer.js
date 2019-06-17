@@ -3,7 +3,9 @@ import * as actionTypes from "./actionTypes";
 const initialState = {
   genres: [],
   movieDetails: {},
-  loading: true
+  loading: true,
+  search: "",
+  searchMovies: []
 };
 
 const getGenres = (state = initialState, action) => {
@@ -38,6 +40,14 @@ const changeLoadingState = (state = initialState, action) => {
   };
 };
 
+const getSearchMovies = (state = initialState, action) => {
+  const searchMovies = action.searchMovies;
+  return {
+    ...state,
+    searchMovies
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_GENRES:
@@ -48,6 +58,8 @@ const reducer = (state = initialState, action) => {
       return changeLoadingState(state, action);
     case actionTypes.GET_SEARCH:
       return getSearchValue(state, action);
+    case actionTypes.GET_SEARCH_MOVIES:
+      return getSearchMovies(state, action);
     default:
       return state;
   }

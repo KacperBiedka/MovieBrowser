@@ -3,6 +3,7 @@ import classes from "./Home.module.sass";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actionTypes";
 
+import Navbar from "../../components/Navbar/Navbar";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import CarouselComp from "../../components/CarouselComp/CarouselComp";
 import MovieList from "../../components/MovieList/MovieList";
@@ -71,39 +72,46 @@ class Home extends Component {
     }
   };
 
+  submitSearchValue = searchValue => {
+    this.props.getSearchValue(searchValue);
+  };
+
   render() {
     return (
-      <div className={classes.mainHomeDiv}>
-        <div>
-          <LoadingScreen
-            visible={this.state.showLoader}
-            display={this.state.loaderDisplay}
-          />
-          {this.state.movieDetails}
-          <CarouselComp toggleMovieDetails={this.toggleMovieDetails} />
-          <MovieList
-            toggleMovieDetails={this.toggleMovieDetails}
-            path="popular"
-            title="Popular"
-          />
-          <MovieList
-            toggleMovieDetails={this.toggleMovieDetails}
-            path="score"
-            title="Highest Avarage Score"
-          />
-          <MovieList
-            toggleMovieDetails={this.toggleMovieDetails}
-            path="revenue"
-            title="Highest Revenue"
-          />
-          <MovieList
-            toggleMovieDetails={this.toggleMovieDetails}
-            closeLoadingScreen={this.closeLoadingScreen}
-            path="upcoming"
-            title="Upcoming"
-          />
+      <>
+        <Navbar submitSearchValue={this.submitSearchValue} />
+        <div className={classes.mainHomeDiv}>
+          <div>
+            <LoadingScreen
+              visible={this.state.showLoader}
+              display={this.state.loaderDisplay}
+            />
+            {this.state.movieDetails}
+            <CarouselComp toggleMovieDetails={this.toggleMovieDetails} />
+            <MovieList
+              toggleMovieDetails={this.toggleMovieDetails}
+              path="popular"
+              title="Popular"
+            />
+            <MovieList
+              toggleMovieDetails={this.toggleMovieDetails}
+              path="score"
+              title="Highest Avarage Score"
+            />
+            <MovieList
+              toggleMovieDetails={this.toggleMovieDetails}
+              path="revenue"
+              title="Highest Revenue"
+            />
+            <MovieList
+              toggleMovieDetails={this.toggleMovieDetails}
+              closeLoadingScreen={this.closeLoadingScreen}
+              path="upcoming"
+              title="Upcoming"
+            />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -116,7 +124,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getGenres: genres => dispatch(actionTypes.getGenres(genres))
+    getGenres: genres => dispatch(actionTypes.getGenres(genres)),
+    getSearchValue: search => dispatch(actionTypes.getSearchValue(search))
   };
 };
 
