@@ -88,7 +88,11 @@ class MovieDetails extends Component {
                     <div className={classes.movieInfoDiv}>
                       <ul>
                         <li>
-                          Release Date: {this.props.movieDetails.release_date}
+                          Release Date:{" "}
+                          {this.props.movieDetails.release_date.replace(
+                            /\-/g,
+                            "."
+                          )}
                         </li>
                         <li>
                           Production:{" "}
@@ -105,11 +109,16 @@ class MovieDetails extends Component {
                         <li>
                           Avarage rating: {this.props.movieDetails.vote_average}
                         </li>
-                        <li>Budget: {this.props.movieDetails.budget}</li>
+                        <li>
+                          Budget:{" "}
+                          {this.props.movieDetails.budget === 0
+                            ? "No data available"
+                            : this.props.movieDetails.budget}
+                        </li>
                         <li>
                           Revenue:{" "}
                           {this.props.movieDetails.revenue === 0
-                            ? "No data available yet"
+                            ? "No data available"
                             : this.props.movieDetails.revenue}
                         </li>
                         <li>
@@ -170,7 +179,11 @@ class MovieDetails extends Component {
                   <div className={classes.movieInfoDiv}>
                     <ul>
                       <li>
-                        Release Date: {this.props.movieDetails.release_date}
+                        Release Date:{" "}
+                        {this.props.movieDetails.release_date.replace(
+                          /\-/g,
+                          "."
+                        )}
                       </li>
                       <li>
                         Production:{" "}
@@ -187,11 +200,16 @@ class MovieDetails extends Component {
                       <li>
                         Avarage rating: {this.props.movieDetails.vote_average}
                       </li>
-                      <li>Budget: {this.props.movieDetails.budget}</li>
+                      <li>
+                        Budget:{" "}
+                        {this.props.movieDetails.budget === 0
+                          ? "No data available"
+                          : this.props.movieDetails.budget}
+                      </li>
                       <li>
                         Revenue:{" "}
                         {this.props.movieDetails.revenue === 0
-                          ? "No data available yet"
+                          ? "No data available"
                           : this.props.movieDetails.revenue}
                       </li>
                       <li>

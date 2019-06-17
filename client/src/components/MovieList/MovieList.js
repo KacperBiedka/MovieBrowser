@@ -28,19 +28,26 @@ class MovieList extends Component {
           console.log(parsedMovies);
           let data = [];
           parsedMovies.results.forEach(movie => {
-            let genresName = [];
-            genresName.push(
-              this.props.genres.find(key => key.id === movie.genre_ids[0])
-            );
-            data.push({
-              imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
-              title: movie.title,
-              genre: genresName[0].name,
-              id: movie.id
-            });
-            this.setState({
-              data: data
-            });
+            if (
+              movie.poster_path &&
+              movie.title &&
+              movie.id &&
+              movie.genre_ids
+            ) {
+              let genresName = [];
+              genresName.push(
+                this.props.genres.find(key => key.id === movie.genre_ids[0])
+              );
+              data.push({
+                imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
+                title: movie.title,
+                genre: genresName[0].name,
+                id: movie.id
+              });
+              this.setState({
+                data: data
+              });
+            }
           });
         })
         .then(() => {
