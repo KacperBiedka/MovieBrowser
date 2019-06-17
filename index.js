@@ -69,6 +69,25 @@ app.get("/api/popular", (req, res, next) => {
   res.json(popular);
 });
 
+// Get movies with Keanu Reeves
+
+request(
+  `http://api.themoviedb.org/3/discover/movie?${key}&with_cast=6384`,
+  (error, response, body) => {
+    if (!error) {
+      keanu = body;
+      console.log(JSON.parse(body));
+      return keanu;
+    } else {
+      console.log(error);
+    }
+  }
+);
+
+app.get("/api/keanu", (req, res, next) => {
+  res.json(keanu);
+});
+
 // Get movies with the biggest revenue
 
 request(

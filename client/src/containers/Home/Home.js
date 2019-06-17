@@ -95,6 +95,12 @@ class Home extends Component {
             />
             <MovieList
               toggleMovieDetails={this.toggleMovieDetails}
+              closeLoadingScreen={this.closeLoadingScreen}
+              path="keanu"
+              title="Movies with Keanu Reeves"
+            />
+            <MovieList
+              toggleMovieDetails={this.toggleMovieDetails}
               path="score"
               title="Highest Avarage Score"
             />

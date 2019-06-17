@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import * as actionTypes from "../../store/actionTypes";
 import classes from "./Navbar.module.sass";
 
@@ -30,9 +30,10 @@ class Navbar extends Component {
     console.log(e.target.value);
   };
 
-  submitValue = () => {
+  submitValue = history => {
     if (this.state.searchValue.trim()) {
       this.props.submitSearchValue(this.state.searchValue);
+      history.push("/search");
     } else {
       this.setState({
         animationClass: "animated shake "
@@ -71,14 +72,16 @@ class Navbar extends Component {
             onKeyUp={this.checkForSubmit}
           />
           <div className={classes.searchIconDiv}>
-            <NavLink style={{ textDecoration: "none" }} to="/search">
-              <i
-                onClick={this.submitValue}
-                className={"material-icons " + classes.searchIcon}
-              >
-                search
-              </i>
-            </NavLink>
+            <Route
+              render={({ history }) => (
+                <i
+                  onClick={() => this.submitValue(history)}
+                  className={"material-icons " + classes.searchIcon}
+                >
+                  search
+                </i>
+              )}
+            />
           </div>
         </div>
       </div>

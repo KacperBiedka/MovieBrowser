@@ -79,7 +79,7 @@ class CarouselComp extends Component {
       fetch(`/api/movieID/${id}`)
         .then(res => res.json())
         .then(movieData => {
-          console.log(JSON.parse(movieData).title);
+          console.log(JSON.parse(movieData));
           this.props.getMovieDetails(JSON.parse(movieData));
           setTimeout(() => {
             this.props.changeLoadingState(false);

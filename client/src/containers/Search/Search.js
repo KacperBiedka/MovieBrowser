@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import classes from "./Search.module.sass";
 import { connect } from "react-redux";
-import { Fade, Shake } from "react-reveal";
+import { Fade } from "react-reveal";
 import * as actionTypes from "../../store/actionTypes";
 
 import Navbar from "../../components/Navbar/Navbar";
-import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 
@@ -15,7 +14,8 @@ class Search extends Component {
     data: [],
     genres: [],
     shakeMessage: "",
-    movieDetails: null
+    movieDetails: null,
+    loading: true
   };
 
   componentDidMount = () => {
@@ -69,12 +69,16 @@ class Search extends Component {
               console.log(movie.title);
             }
             this.setState({
-              data: data
+              data: data,
+              loading: false
             });
             this.props.getSearchValue("");
           });
         });
     } else {
+      this.setState({
+        loading: false
+      });
       console.log("there is no value to search for");
     }
   };
@@ -147,7 +151,7 @@ class Search extends Component {
         <Navbar showChevron={true} submitSearchValue={this.submitSearchValue} />
         {this.state.movieDetails}
         <div className={classes.mainSearchDiv}>
-          {this.state.data.length === 0 ? (
+          {this.state.data.length === 0 && !this.state.loading ? (
             <div className={classes.messageDiv}>
               <h5 className={classes.messageHeader}>Enter a movie name</h5>
             </div>
