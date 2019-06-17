@@ -141,6 +141,21 @@ app.get("/api/movieID/:movieID", (req, res, next) => {
   );
 });
 
+// Search for a movie
+
+app.get("/api/search/:query", (req, res, next) => {
+  request(
+    `https://api.themoviedb.org/3/search/movie?${key}&language=en-US&query=${
+      req.params.query
+    }&page=1&include_adult=false`,
+    (error, response, body) => {
+      if (!error && response.statusCode == 200) {
+        res.json(body);
+      }
+    }
+  );
+});
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 // app.get("*", (req, res) => {
@@ -150,4 +165,4 @@ app.get("/api/movieID/:movieID", (req, res, next) => {
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Password generator listening on ${port}`);
+console.log(`Server listening on ${port}`);

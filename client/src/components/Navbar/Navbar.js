@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import * as actionTypes from "../../store/actionTypes";
 import classes from "./Navbar.module.sass";
 
@@ -31,12 +32,14 @@ class Navbar extends Component {
             value={this.state.searchValue}
           />
           <div className={classes.searchIconDiv}>
-            <i
-              onClick={this.submitSearchValue}
-              className={"material-icons " + classes.searchIcon}
-            >
-              search
-            </i>
+            <NavLink style={{ textDecoration: "none" }} to="/search">
+              <i
+                onClick={this.submitSearchValue}
+                className={"material-icons " + classes.searchIcon}
+              >
+                search
+              </i>
+            </NavLink>
           </div>
         </div>
       </div>

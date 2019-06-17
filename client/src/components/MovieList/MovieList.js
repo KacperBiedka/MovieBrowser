@@ -104,9 +104,6 @@ class MovieList extends Component {
                   genre={movie.genre}
                   id={movie.id}
                 />
-                // <div dsiapl>
-                //   <img src={movie.imgSrc} width="250px" />
-                // </div>
               );
             })}
           </Slider>
