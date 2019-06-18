@@ -41,12 +41,6 @@ class Navbar extends Component {
     }
   };
 
-  checkForSubmit = e => {
-    if (e.key === "Enter") {
-      this.submitValue();
-    }
-  };
-
   render() {
     return (
       <div className={classes.mainNavDiv}>

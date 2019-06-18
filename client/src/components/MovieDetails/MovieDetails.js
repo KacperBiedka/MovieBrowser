@@ -90,6 +90,7 @@ class MovieDetails extends Component {
                         <li>
                           Release Date:{" "}
                           {this.props.movieDetails.release_date.replace(
+                            // eslint-disable-next-line
                             /\-/g,
                             "."
                           )}
@@ -181,6 +182,7 @@ class MovieDetails extends Component {
                       <li>
                         Release Date:{" "}
                         {this.props.movieDetails.release_date.replace(
+                          // eslint-disable-next-line
                           /\-/g,
                           "."
                         )}
