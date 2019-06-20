@@ -51,18 +51,16 @@ class Search extends Component {
             genresName.push(
               this.props.genres.find(key => key.id === movie.genre_ids[0])
             );
-            if (genresName[0] !== undefined && movie.poster_path) {
+            if (
+              genresName[0] !== undefined &&
+              movie.poster_path &&
+              movie.title &&
+              movie.id
+            ) {
               data.push({
                 imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
                 title: movie.title,
                 genre: genresName[0].name,
-                id: movie.id
-              });
-            } else if (genresName[0] === undefined && movie.poster_path) {
-              data.push({
-                imgSrc: null,
-                title: movie.title,
-                genre: "unknown",
                 id: movie.id
               });
             } else {
@@ -101,18 +99,16 @@ class Search extends Component {
                 key => key.id === movie.genre_ids[0]
               )
             );
-            if (genresName[0] !== undefined && movie.poster_path) {
+            if (
+              genresName[0] !== undefined &&
+              movie.poster_path &&
+              movie.title &&
+              movie.id
+            ) {
               data.push({
                 imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
                 title: movie.title,
                 genre: genresName[0].name,
-                id: movie.id
-              });
-            } else if (genresName[0] === undefined && movie.poster_path) {
-              data.push({
-                imgSrc: "https://image.tmdb.org/t/p/w342/" + movie.poster_path,
-                title: movie.title,
-                genre: "unknown",
                 id: movie.id
               });
             } else {

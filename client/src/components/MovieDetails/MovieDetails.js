@@ -89,15 +89,20 @@ class MovieDetails extends Component {
                       <ul>
                         <li>
                           Release Date:{" "}
-                          {this.props.movieDetails.release_date.replace(
-                            // eslint-disable-next-line
-                            /\-/g,
-                            "."
-                          )}
+                          {this.props.movieDetails.release_date
+                            ? this.props.movieDetails.release_date.replace(
+                                // eslint-disable-next-line
+                                /\-/g,
+                                "."
+                              )
+                            : "no data available"}
                         </li>
                         <li>
                           Production:{" "}
-                          {this.props.movieDetails.production_companies[0].name}
+                          {this.props.movieDetails.production_companies[0]
+                            ? this.props.movieDetails.production_companies[0]
+                                .name
+                            : "no data available"}
                         </li>
                         <li>
                           Runtime:{" "}
@@ -181,15 +186,19 @@ class MovieDetails extends Component {
                     <ul>
                       <li>
                         Release Date:{" "}
-                        {this.props.movieDetails.release_date.replace(
-                          // eslint-disable-next-line
-                          /\-/g,
-                          "."
-                        )}
+                        {this.props.movieDetails.release_date
+                          ? this.props.movieDetails.release_date.replace(
+                              // eslint-disable-next-line
+                              /\-/g,
+                              "."
+                            )
+                          : "no data available"}
                       </li>
                       <li>
                         Production:{" "}
-                        {this.props.movieDetails.production_companies[0].name}
+                        {this.props.movieDetails.production_companies[0]
+                          ? this.props.movieDetails.production_companies[0].name
+                          : "no data available"}
                       </li>
                       <li>
                         Runtime:{" "}
