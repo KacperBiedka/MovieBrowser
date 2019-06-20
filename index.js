@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require("path");
 const request = require("request");
+const apikey = require("./apikey");
 
 const app = express();
 
 const baseURL = "https://api.themoviedb.org/3";
-const key = "api_key=04c05e4935a42d8b5a5c5079e20e4c77";
+const key = apikey.key;
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
