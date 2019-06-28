@@ -1,0 +1,51 @@
+@import '../../_variables.sass'
+    
+.mainFooterDiv
+    height: 300px
+    background: lighten($background-black, 2.5)
+    width: 100vw
+    margin-top: 100px
+    text-align: center
+    border-top: solid 1px lighten($background-black, 15)
+    @media (max-width: 1150px)
+        height: auto
+        padding-bottom: 50px
+
+.footerDescribtion
+    display: inline-block
+    width: 75vw
+    margin: auto
+    margin-right: 5vw
+    vertical-align: middle
+    margin-top: 100px
+    color: lighten($background-black, 25)
+    font-size: 22.5px
+    font-family: $fira
+    font-weight: 200
+    text-align: right
+    transition: color 0.5s ease-in-out, text-decoration-color 0.5s ease-in-out
+    cursor: pointer
+    &:hover
+        color: #fff
+        text-decoration-color: $pink
+    @media (max-width: 1150px)
+        display: block
+        width: 90vw
+        text-align: center
+        
+
+.logoContainer
+    display: inline-block
+    width: 20vw
+    margin: auto
+    vertical-align: middle
+    text-align: left
+    @media (max-width: 1150px)
+        display: block
+        width: 90vw
+        text-align: center
+
+.logo
+    height: 75px
+    margin-top: 112.5px
+    

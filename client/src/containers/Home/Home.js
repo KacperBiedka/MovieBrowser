@@ -8,6 +8,7 @@ import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import CarouselComp from "../../components/CarouselComp/CarouselComp";
 import MovieList from "../../components/MovieList/MovieList";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
+import Footer from "../../components/Footer/Footer";
 
 class Home extends Component {
   state = {
@@ -115,6 +116,7 @@ class Home extends Component {
               path="upcoming"
               title="Upcoming"
             />
+            <Footer />
           </div>
         </div>
       </>
