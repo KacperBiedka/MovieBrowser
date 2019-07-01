@@ -46,14 +46,14 @@ class Home extends Component {
   };
 
   closeLoadingScreen = () => {
-    this.setState({
-      showLoader: false
-    });
     setTimeout(() => {
+      this.setState({
+        showLoader: false
+      });
       this.setState({
         loaderDisplay: "none"
       });
-    });
+    }, 2000);
   };
 
   toggleMovieDetails = () => {
